@@ -1,0 +1,35 @@
+#[cfg_attr(feature = "cli", derive(clap::Args))]
+#[derive(serde::Serialize, serde::Deserialize, Debug, Default, Clone)]
+pub struct PostApiVersionObjectStorageKeysBody {
+    #[cfg_attr(feature = "cli", arg(id = "bucket-access", long = "bucket-access"))]
+    #[cfg_attr(
+        feature = "cli",
+        arg(
+            value_parser = crate::core::clap::parse_json::<crate::models::PostApiVersionObjectStorageKeysBodyBucketAccessItem>
+        )
+    )]
+    #[cfg_attr(feature = "cli", arg(num_args = 0.., value_delimiter = ' '))]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub bucket_access: Option<
+        Vec<crate::models::PostApiVersionObjectStorageKeysBodyBucketAccessItem>,
+    >,
+    #[cfg_attr(feature = "cli", arg(id = "label", long = "label"))]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub label: Option<String>,
+    #[cfg_attr(feature = "cli", arg(id = "regions", long = "regions"))]
+    #[cfg_attr(feature = "cli", arg(num_args = 0.., value_delimiter = ' '))]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub regions: Option<Vec<String>>,
+    #[serde(flatten)]
+    #[cfg_attr(
+        feature = "cli",
+        arg(
+            id = "additional-props",
+            long = "additional-props",
+            value_parser = crate::core::clap::parse_json::<std::collections::HashMap<String,
+            serde_json::Value>>,
+            default_value = "{}",
+        )
+    )]
+    pub additional_properties: std::collections::HashMap<String, serde_json::Value>,
+}

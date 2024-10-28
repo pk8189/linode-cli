@@ -1,0 +1,32 @@
+#[cfg_attr(feature = "cli", derive(clap::Args))]
+#[derive(serde::Serialize, serde::Deserialize, Debug, Default, Clone)]
+pub struct GetApiVersionPlacementGroupsResponseDataItemMigrations {
+    #[cfg_attr(feature = "cli", arg(id = "inbound", long = "inbound"))]
+    #[cfg_attr(
+        feature = "cli",
+        arg(
+            value_parser = crate::core::clap::parse_json::<crate::models::GetApiVersionPlacementGroupsResponseDataItemMigrationsInboundItem>
+        )
+    )]
+    #[cfg_attr(feature = "cli", arg(num_args = 0.., value_delimiter = ' '))]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub inbound: Option<
+        Vec<
+            crate::models::GetApiVersionPlacementGroupsResponseDataItemMigrationsInboundItem,
+        >,
+    >,
+    #[cfg_attr(feature = "cli", arg(id = "outbound", long = "outbound"))]
+    #[cfg_attr(
+        feature = "cli",
+        arg(
+            value_parser = crate::core::clap::parse_json::<crate::models::GetApiVersionPlacementGroupsResponseDataItemMigrationsOutboundItem>
+        )
+    )]
+    #[cfg_attr(feature = "cli", arg(num_args = 0.., value_delimiter = ' '))]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub outbound: Option<
+        Vec<
+            crate::models::GetApiVersionPlacementGroupsResponseDataItemMigrationsOutboundItem,
+        >,
+    >,
+}
